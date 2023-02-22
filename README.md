@@ -32,4 +32,4 @@ platformio.ini
 
 Comprehensive documentation for SensESP, including how to get started with your own project, is available at the [SensESP documentation site](https://signalk.org/SensESP/).
 
-See Schematic.jpg for the schematic
+See [Schematic.jpg](https://github.com/Techstyleuk/SensESP_3_Battery_Monitor/blob/main/Schematic.jpg) for the schematic and [INA219_detail.jpg]() for more info on the current board setup
