@@ -1,16 +1,11 @@
 // SensESP Battery Monitor for Apres 
-
 #include <Wire.h>
-
 /////////////////////Added for INA219
 #include <Adafruit_INA219.h>
 //////////////////end of Add
-
 #include "sensesp_onewire/onewire_temperature.h"
 
-
 #include <Arduino.h>
-
 
 #include "sensesp/sensors/analog_input.h"
 #include "sensesp/sensors/digital_input.h"
@@ -25,7 +20,6 @@
 #include "sensesp/sensors/digital_input.h"
 #include "sensesp/transforms/frequency.h"
 
-
 using namespace sensesp;
 
   // State of Charge lookup
@@ -38,16 +32,17 @@ class SoCAInterpreter : public CurveInterpolator {
     clear_samples();
     // addSample(CurveInterpolator::Sample(knownOhmValue, knownPascal));
     add_sample(CurveInterpolator::Sample(2.5, 0));
-    //add_sample(CurveInterpolator::Sample(11.31, .1));
-    //add_sample(CurveInterpolator::Sample(11.58, .2));
-    //add_sample(CurveInterpolator::Sample(11.75, .3));
-    //add_sample(CurveInterpolator::Sample(11.9, .4));
-    //add_sample(CurveInterpolator::Sample(12.06, .5));
-    //add_sample(CurveInterpolator::Sample(12.2, .6));
-    //add_sample(CurveInterpolator::Sample(12.32, .7));
-    //add_sample(CurveInterpolator::Sample(12.42, .8)); 
-    //add_sample(CurveInterpolator::Sample(12.5, .9));
-    add_sample(CurveInterpolator::Sample(6.0, 1)); 
+    add_sample(CurveInterpolator::Sample(10.5, 0));
+    add_sample(CurveInterpolator::Sample(11.31, .1));
+    add_sample(CurveInterpolator::Sample(11.58, .2));
+    add_sample(CurveInterpolator::Sample(11.75, .3));
+    add_sample(CurveInterpolator::Sample(11.9, .4));
+    add_sample(CurveInterpolator::Sample(12.06, .5));
+    add_sample(CurveInterpolator::Sample(12.2, .6));
+    add_sample(CurveInterpolator::Sample(12.32, .7));
+    add_sample(CurveInterpolator::Sample(12.42, .8)); 
+    add_sample(CurveInterpolator::Sample(12.5, .9));
+    add_sample(CurveInterpolator::Sample(12.6, 1)); 
     add_sample(CurveInterpolator::Sample(20.0, 1)); 
   }
 };
@@ -59,16 +54,17 @@ class SoCBInterpreter : public CurveInterpolator {
     // our INA219_B to % (Ratio)
     clear_samples();
     // addSample(CurveInterpolator::Sample(knownOhmValue, knownPascal));
+    add_sample(CurveInterpolator::Sample(2.5, 0));
     add_sample(CurveInterpolator::Sample(10.5, 0));
-    //add_sample(CurveInterpolator::Sample(11.31, .1));
-    //add_sample(CurveInterpolator::Sample(11.58, .2));
-    //add_sample(CurveInterpolator::Sample(11.75, .3));
-    //add_sample(CurveInterpolator::Sample(11.9, .4));
-    //add_sample(CurveInterpolator::Sample(12.06, .5));
-    //add_sample(CurveInterpolator::Sample(12.2, .6));
-    //add_sample(CurveInterpolator::Sample(12.32, .7));
-    //add_sample(CurveInterpolator::Sample(12.42, .8)); 
-    //add_sample(CurveInterpolator::Sample(12.5, .9));
+    add_sample(CurveInterpolator::Sample(11.31, .1));
+    add_sample(CurveInterpolator::Sample(11.58, .2));
+    add_sample(CurveInterpolator::Sample(11.75, .3));
+    add_sample(CurveInterpolator::Sample(11.9, .4));
+    add_sample(CurveInterpolator::Sample(12.06, .5));
+    add_sample(CurveInterpolator::Sample(12.2, .6));
+    add_sample(CurveInterpolator::Sample(12.32, .7));
+    add_sample(CurveInterpolator::Sample(12.42, .8)); 
+    add_sample(CurveInterpolator::Sample(12.5, .9));
     add_sample(CurveInterpolator::Sample(12.6, 1)); 
     add_sample(CurveInterpolator::Sample(20.0, 1)); 
   }
@@ -81,33 +77,30 @@ class SoCCInterpreter : public CurveInterpolator {
     // our INA219_C to % (Ratio)
     clear_samples();
     // addSample(CurveInterpolator::Sample(knownOhmValue, knownPascal));
+    add_sample(CurveInterpolator::Sample(2.5, 0));
     add_sample(CurveInterpolator::Sample(10.5, 0));
-    //add_sample(CurveInterpolator::Sample(11.31, .1));
-    //add_sample(CurveInterpolator::Sample(11.58, .2));
-    //add_sample(CurveInterpolator::Sample(11.75, .3));
-    //add_sample(CurveInterpolator::Sample(11.9, .4));
-    //add_sample(CurveInterpolator::Sample(12.06, .5));
-    //add_sample(CurveInterpolator::Sample(12.2, .6));
-    //add_sample(CurveInterpolator::Sample(12.32, .7));
-    //add_sample(CurveInterpolator::Sample(12.42, .8)); 
-    //add_sample(CurveInterpolator::Sample(12.5, .9));
+    add_sample(CurveInterpolator::Sample(11.31, .1));
+    add_sample(CurveInterpolator::Sample(11.58, .2));
+    add_sample(CurveInterpolator::Sample(11.75, .3));
+    add_sample(CurveInterpolator::Sample(11.9, .4));
+    add_sample(CurveInterpolator::Sample(12.06, .5));
+    add_sample(CurveInterpolator::Sample(12.2, .6));
+    add_sample(CurveInterpolator::Sample(12.32, .7));
+    add_sample(CurveInterpolator::Sample(12.42, .8)); 
+    add_sample(CurveInterpolator::Sample(12.5, .9));
     add_sample(CurveInterpolator::Sample(12.6, 1)); 
     add_sample(CurveInterpolator::Sample(20.0, 1)); 
   }
 };
-
 reactesp::ReactESP app;
-
-
 ////////////////////INA219
-
   Adafruit_INA219 ina219_A;
   Adafruit_INA219 ina219_B(0x41);
   Adafruit_INA219 ina219_C(0x44);
 
-  const float RshuntA = 0.1;
-  const float RshuntB = 0.1;
-  const float RshuntC = 0.1;
+  const float RshuntA = 0.0005;
+  const float RshuntB = 0.0005;
+  const float RshuntC = 0.0005;
 
   //float read_A_current_callback() { return (ina219_A.getCurrent_mA() / 1000);}
   float read_A_current_callback() { return ((ina219_A.getShuntVoltage_mV() / 1000) / RshuntA);}
@@ -130,25 +123,6 @@ reactesp::ReactESP app;
   float read_C_loadvoltage_callback() { return (ina219_C.getBusVoltage_V() + (ina219_C.getShuntVoltage_mV() / 1000));}
   float read_C_power_callback() { return ((ina219_C.getBusVoltage_V() + (ina219_C.getShuntVoltage_mV() / 1000)) * (ina219_C.getCurrent_mA() / 1000));}
 /////////////////////INA219 end of Add
-
-//Some general battery related messages
-//Battery A - Typical Start
-const char* Abatname = "/A Battery/Name";
-const char* Abatlocation = "/A Battery/Location";
-const char* Abatchemistry = "/Start Battery/Chemistry";
-const char* Abatcapacity = "/Start Battery/Capacity (Ah)";
-
-//Battery B - Typical House 1
-const char* Bbatname = "/B Battery/Name";
-const char* Bbatlocation = "/B Battery/Location";
-const char* Bbatchemistry = "/B Battery/Chemistry";
-const char* Bbatcapacity = "/B Battery/Capacity (Ah)";
-
-//Battery C
-const char* Cbatname = "/C Battery/Name";
-const char* Cbatlocation = "/C Battery/Location";
-const char* Cbatchemistry = "/C Battery/Chemistry";
-const char* Cbatcapacity = "/C Battery/Capacity (Ah)";
 
 // The setup function performs one-time application initialization.
 void setup() {
@@ -192,7 +166,7 @@ void setup() {
 
   A_bat_temp->connect_to(new Linear(1.0, 0.0, "/A Battery Temperature/linear"))
       ->connect_to(
-          new SKOutputFloat("/electrical.batteries.A.temperature",
+          new SKOutputFloat("electrical.batteries.A.temperature",
                              "/A Battery Temperature/sk_path"));
 
  // B Battery Temperature - electrical.batteries.B.temperature
@@ -201,7 +175,7 @@ void setup() {
 
   B_bat_temp->connect_to(new Linear(1.0, 0.0, "/B Battery Temperature/linear"))
       ->connect_to(
-          new SKOutputFloat("/electrical.batteries.B.temperature",
+          new SKOutputFloat("electrical.batteries.B.temperature",
                              "/B Battery Temperature/sk_path"));
 
   // C Battery Temperature - electrical.batteries.C.temperature
@@ -210,7 +184,7 @@ void setup() {
 
   C_bat_temp->connect_to(new Linear(1.0, 0.0, "/C Battery Temperature/linear"))
       ->connect_to(
-          new SKOutputFloat("/electrical.batteries.C.temperature",
+          new SKOutputFloat("electrical.batteries.C.temperature",
                              "/C Battery Temperature/sk_path"));
 
 ///////////////////////////INA219 start
@@ -308,17 +282,9 @@ void setup() {
 
   ina219_C_loadvoltage->connect_to(new SoCCInterpreter("/Battery C/Voltage/curve"))
         ->connect_to(new SKOutputFloat("electrical.batteries.C.capacity.stateOfCharge", "/Battery C State of Charge/sk_path"));
-
 ///////////////////////end of INA add
-
-  //Abatname->connect_to(new SKOutputFloat("electrical.batteries.A.name");
-  //Abatlocation->connect_to(new SKOutputFloat("electrical.batteries.A.location"));
-  //Abatchemistry->connect_to(new SKOutputFloat("electrical.batteries.A.chemistry"));
-
 
   // Start networking, SK server connections and other SensESP internals
   sensesp_app->start();
-
 }
-
 void loop() { app.tick(); }
