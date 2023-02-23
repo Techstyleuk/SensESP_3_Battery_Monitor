@@ -33,3 +33,7 @@ platformio.ini
 Comprehensive documentation for SensESP, including how to get started with your own project, is available at the [SensESP documentation site](https://signalk.org/SensESP/).
 
 See [Schematic.jpg](https://github.com/Techstyleuk/SensESP_3_Battery_Monitor/blob/main/Schematic.jpg) for the schematic and [INA219_detail.jpg](https://github.com/Techstyleuk/SensESP_3_Battery_Monitor/blob/main/INA219_detail.jpg) for more info on the current board setup
+
+Here is a picture of the shunt on a test battery, the shunt was much smaller (physicallY) than I was expecting and I really need bigger holes, so a different one may make its way to the production version:
+![Shunt1](https://github.com/Techstyleuk/SensESP_3_Battery_Monitor/blob/main/Shunt1.JPG)
+there is a second pic in the files
