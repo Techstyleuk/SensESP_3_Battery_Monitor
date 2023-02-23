@@ -36,4 +36,4 @@ See [Schematic.jpg](https://github.com/Techstyleuk/SensESP_3_Battery_Monitor/blo
 
 Here is a picture of the shunt on a test battery, the shunt was much smaller (physicallY) than I was expecting and I really need bigger holes, so a different one may make its way to the production version:
 ![Shunt1](https://github.com/Techstyleuk/SensESP_3_Battery_Monitor/blob/main/Shunt1.JPG)
-there is a second pic in the files
+The resistors are for filtering (with the capacitor), they will be inside the box, eventually.  There is a second pic in the files
