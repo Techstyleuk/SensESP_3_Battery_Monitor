@@ -1,5 +1,5 @@
 # SensESP_3_Battery_Monitor
-SensESP setup for monitoring 3 boat batteries
+SensESP setup for monitoring 3 boat batteries.  This will be installed on my Boat Apres
 
 Hardware side
 what I bought was:
@@ -9,8 +9,6 @@ what I bought was:
 - [Buck converter](https://amzn.to/3Z54veM)
 
 - [INA219 Current sensor boards](https://amzn.to/3EIlT1d)	
-
-- [Waveshare CAN board](https://amzn.to/3Kud8ew)	
 
 - [1-Wire Temperature sensors](https://amzn.to/3kkkZ3f)	
 
